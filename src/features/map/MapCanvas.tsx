@@ -161,6 +161,7 @@ const MapCanvas = forwardRef<MapCanvasHandle, MapCanvasProps>(function MapCanvas
     let target: GeoPermissibleObjects | null = context;
     if (!target) {
       const fitFeatures = features.filter((f) => !isAntarctica(f));
+      if (fitFeatures.length === 0 && features.length === 0) return proj; // no geometry yet
       target = {
         type: 'FeatureCollection',
         features: (fitFeatures.length > 0 ? fitFeatures : features) as GeoJSON.Feature[],
@@ -180,16 +181,21 @@ const MapCanvas = forwardRef<MapCanvasHandle, MapCanvasProps>(function MapCanvas
   useEffect(() => {
     cancelAnimationFrame(rafRef.current);
     if (w < 10 || h < 10) return;
+    // Nothing to fit yet — fitting an empty FeatureCollection yields a NaN
+    // projection, and a NaN `fromK` would poison the flight interpolation
+    // permanently. Wait for real geometry instead.
+    if (!context && features.length === 0) return;
     const target = computeFit();
-    if (reducedMotion || !fittedOnce.current) {
+    if (!Number.isFinite(target.scale()) || !Number.isFinite(target.translate()[0])) return;
+    const fromK = projRef.current.scale();
+    const fromT = projRef.current.translate();
+    if (reducedMotion || !fittedOnce.current || !Number.isFinite(fromK) || !Number.isFinite(fromT[0]) || !Number.isFinite(fromT[1])) {
       setProjection(target);
       fittedOnce.current = true;
       resetTransform(false);
       bump();
       return;
     }
-    const fromK = projRef.current.scale();
-    const fromT = projRef.current.translate();
     const toK = target.scale();
     const toT = target.translate();
     if (Math.abs(fromK - toK) < 0.5 && Math.abs(fromT[0] - toT[0]) < 0.5 && Math.abs(fromT[1] - toT[1]) < 0.5) {
