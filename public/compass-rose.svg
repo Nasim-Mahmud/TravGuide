@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none">
+  <!-- Decorative engraved compass rose (About hero). Fine 1px ink strokes, one brass needle. -->
+  <g stroke="#221E17" stroke-width="1" opacity="0.8">
+    <circle cx="240" cy="240" r="226"/>
+    <circle cx="240" cy="240" r="218" opacity="0.5"/>
+    <circle cx="240" cy="240" r="150" opacity="0.65"/>
+    <circle cx="240" cy="240" r="146" opacity="0.35"/>
+    <circle cx="240" cy="240" r="60" opacity="0.7"/>
+  </g>
+  <!-- degree ticks -->
+  <g stroke="#221E17" opacity="0.55">
+    <g id="ticks">
+      <path d="M240 14 L240 26" stroke-width="1"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(15 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(30 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(45 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(60 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(75 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(90 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(105 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(120 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(135 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(150 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(165 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(180 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(195 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(210 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(225 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(240 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(255 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(270 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(285 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(300 240 240)"/>
+      <path d="M240 14 L240 26" stroke-width="1" transform="rotate(315 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(330 240 240)"/>
+      <path d="M240 14 L240 21" stroke-width="0.75" transform="rotate(345 240 240)"/>
+    </g>
+  </g>
+  <!-- cardinal star -->
+  <path d="M240 40 L252 228 L240 240 L228 228 Z" fill="#B57A1F"/>
+  <path d="M240 440 L252 252 L240 240 L228 252 Z" fill="#221E17"/>
+  <path d="M40 240 L228 228 L240 240 L228 252 Z" fill="#221E17"/>
+  <path d="M440 240 L252 228 L240 240 L252 252 Z" fill="#221E17"/>
+  <!-- intercardinal star -->
+  <g fill="#221E17" opacity="0.55">
+    <path d="M98.6 98.6 L233 233 L240 240 L226.9 226.9 Z"/>
+    <path d="M381.4 98.6 L247 233 L240 240 L253.1 226.9 Z"/>
+    <path d="M98.6 381.4 L233 247 L240 240 L226.9 253.1 Z"/>
+    <path d="M381.4 381.4 L247 247 L240 240 L253.1 253.1 Z"/>
+  </g>
+  <!-- inner ring detail -->
+  <g stroke="#221E17" stroke-width="1" opacity="0.5">
+    <path d="M240 180 L240 300 M180 240 L300 240"/>
+    <circle cx="240" cy="240" r="10" fill="#221E17" stroke="none"/>
+  </g>
+  <!-- cardinal letters -->
+  <g fill="#221E17" font-family="Georgia, 'Times New Roman', serif" font-size="26" text-anchor="middle" opacity="0.85">
+    <text x="240" y="128">N</text>
+    <text x="240" y="370">S</text>
+    <text x="368" y="248">E</text>
+    <text x="112" y="248">W</text>
+  </g>
+</svg>

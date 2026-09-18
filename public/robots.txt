@@ -1,0 +1,7 @@
+# Atlas — a personal travel atlas
+User-agent: *
+Allow: /
+
+# TODO: replace with the final domain before launch
+# (e.g. https://<user>.github.io/<repo>/sitemap.xml or a custom domain)
+Sitemap: https://example.com/sitemap.xml

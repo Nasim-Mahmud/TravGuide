@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Atlas sitemap (plan §27). Static entries for the main routes.
+  TODO: replace https://example.com with the final domain before launch
+  (e.g. https://<user>.github.io/<repo> or a custom domain). Paths are
+  absolute, relative to the site root. Post-MVP: add key /country/<iso>
+  routes or switch to per-route prerendering.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example.com/map</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://example.com/stats</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://example.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

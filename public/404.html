@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Atlas — a personal travel atlas</title>
+    <!--
+      GitHub Pages SPA fallback (plan §15.2, spa-github-pages pattern).
+      Deep links like /country/bgd/dhaka-division 404 on Pages; this page
+      rewrites them to /?/country/bgd/dhaka-division so index.html loads and
+      its restore snippet puts the clean URL back via history.replaceState.
+
+      If the site is served from a PROJECT SUBPATH
+      (https://<user>.github.io/<repo>/), set PATH_SEGMENTS_TO_KEEP to 1
+      (and set `base: '/<repo>/'` in vite.config.ts).
+    -->
+    <script>
+      var PATH_SEGMENTS_TO_KEEP = 0;
+      (function (l) {
+        if (l.hostname === 'localhost' || l.hostname === '127.0.0.1') return;
+        var pathSegmentsToKeep = PATH_SEGMENTS_TO_KEEP;
+        var redirect =
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') +
+          '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash;
+        l.replace(redirect);
+      })(window.location);
+    </script>
+  </head>
+  <body></body>
+</html>

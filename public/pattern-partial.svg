@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <!-- Sparse dot grid, partially-visited regions -->
+  <circle cx="1" cy="1" r="0.6" fill="#D8AC5E"/>
+  <circle cx="8" cy="8" r="0.6" fill="#D8AC5E"/>
+  <circle cx="8" cy="1" r="0.6" fill="#D8AC5E"/>
+  <circle cx="1" cy="8" r="0.6" fill="#D8AC5E"/>
+  <circle cx="4.5" cy="4.5" r="0.6" fill="#D8AC5E"/>
+</svg>

@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* shadcn compatibility tokens */
+    --background: 42 33% 95%;
+    --foreground: 40 14% 11%;
+    --card: 45 50% 98%;
+    --card-foreground: 40 14% 11%;
+    --popover: 45 50% 98%;
+    --popover-foreground: 40 14% 11%;
+    --primary: 36 71% 35%;
+    --primary-foreground: 42 33% 95%;
+    --secondary: 42 24% 90%;
+    --secondary-foreground: 40 14% 11%;
+    --muted: 42 24% 90%;
+    --muted-foreground: 42 10% 42%;
+    --accent-foreground: 42 33% 95%;
+    --destructive: 19 60% 45%;
+    --destructive-foreground: 42 33% 95%;
+    --border: 40 22% 81%;
+    --input: 40 22% 81%;
+    --ring: 36 71% 35%;
+    --radius: 0.625rem;
+    --sidebar-background: 45 50% 98%;
+    --sidebar-foreground: 40 14% 11%;
+    --sidebar-primary: 36 71% 35%;
+    --sidebar-primary-foreground: 42 33% 95%;
+    --sidebar-accent: 42 24% 90%;
+    --sidebar-accent-foreground: 40 14% 11%;
+    --sidebar-border: 40 22% 81%;
+    --sidebar-ring: 36 71% 35%;
+
+    /* ── Atlas — paper & ink (design.md §2.1) ─────────────────── */
+    --paper: #F7F3EB;
+    --paper-raised: #FDFBF6;
+    --paper-sunken: #EFE9DD;
+    --ink: #221E17;
+    --ink-soft: #57503F;
+    --ink-faint: #8A8170;
+    --ink-panel: #26221B;
+    --hairline: #DCD3C2;
+    --hairline-strong: #BDB29C;
+
+    /* ── Atlas — visit states (design.md §2.2) ────────────────── */
+    --state-none-fill: #E7E0D1;
+    --state-visited: #E2A03C;
+    --state-visited-stroke: #B57A1F;
+    --state-lived: #2E6B4E;
+    --state-lived-stroke: #1F4A35;
+    --state-transit: #6E87A0;
+    --state-transit-stroke: #4C6178;
+    --state-wishlist: #D08A8A;
+    --state-wishlist-hatch: #C07676;
+    --state-partial: #F0C98C;
+    --state-partial-stroke: #D8AC5E;
+
+    /* ── Atlas — accents (design.md §2.3) ─────────────────────── */
+    --accent: #B57A1F;
+    --accent-strong: #8F5F12;
+    --danger: #B4552E;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+
+  .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" auto, "SOFT" 100;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Focus-visible: 2px accent outline with 2px offset — everywhere incl. SVG */
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Paper grain overlay */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    pointer-events: none;
+    background-image: url('/grain.svg');
+    background-size: 256px 256px;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+  }
+
+  /* Scrollbar styling for paper panels */
+  .atlas-scroll::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .atlas-scroll::-webkit-scrollbar-thumb {
+    background: var(--hairline-strong);
+    border-radius: 8px;
+  }
+  .atlas-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Breadcrumb horizontal scroll with edge fades */
+  .breadcrumb-scroll {
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 20px, black calc(100% - 20px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 20px, black calc(100% - 20px), transparent 100%);
+  }
+  .breadcrumb-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Map region base transitions (fill tween on state change, 200ms) */
+  .atlas-region {
+    transition: fill 200ms ease-out, opacity 200ms ease-out;
+    cursor: pointer;
+  }
+  .atlas-region[data-dimmed="true"] {
+    cursor: default;
+  }
+  .atlas-region-hover {
+    stroke: rgba(34, 30, 23, 0.7) !important;
+    stroke-width: 2px !important;
+    stroke-dasharray: none !important;
+    filter: brightness(1.05) drop-shadow(0 2px 8px rgba(34, 30, 23, 0.18));
+  }
+  .atlas-region-selected {
+    stroke: var(--state-visited-stroke) !important;
+    stroke-width: 2.5px !important;
+    stroke-dasharray: none !important;
+    filter: drop-shadow(0 0 6px rgba(181, 122, 31, 0.4));
+  }
+
+  /* Search / deep-link highlight pulse (design.md §5.4) */
+  .atlas-highlight {
+    stroke: var(--ink);
+    stroke-width: 2.5px;
+    animation: atlas-highlight-pulse 1.2s ease-out 2;
+  }
+  @keyframes atlas-highlight-pulse {
+    0% { stroke-opacity: 1; }
+    50% { stroke-opacity: 0.25; }
+    100% { stroke-opacity: 1; }
+  }
+
+  /* Loading shimmer for clicked region while children fetch */
+  .atlas-loading-region {
+    animation: atlas-shimmer 900ms ease-in-out infinite;
+  }
+
+  /* Reduced motion: everything collapses to instant swaps */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .atlas-region {
+      transition: fill 120ms ease-out;
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .grain-overlay {
+      display: none;
+    }
+  }
+}
+
+@layer components {
+  /* Floating paper card shared by map chrome */
+  .atlas-card {
+    @apply bg-paper-raised border border-hairline rounded-md shadow-elev-2;
+  }
+  .atlas-card-lg {
+    @apply bg-paper-raised border border-hairline rounded-lg shadow-elev-3;
+  }
+  .atlas-label {
+    @apply text-label font-sans font-semibold uppercase text-ink-faint;
+  }
+}
